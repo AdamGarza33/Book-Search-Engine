@@ -20,5 +20,10 @@
     "url": "https://github.com/AdamGarza33/Book-Search-Engine/issues"
   },
   "homepage": "https://github.com/AdamGarza33/Book-Search-Engine#readme",
-  "devDependencies": {"concurrently": "^5.1.0"}
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "apollo-server": "^3.12.0"
+  }
 }
