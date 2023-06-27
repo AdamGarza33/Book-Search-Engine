@@ -7,48 +7,51 @@ const typeDefs = gql`
 
  type Mutation {
     login (
-        email:
-        password:
+        email: String!,
+        password: String!
     ); Auth
 
     addUser(
-        username:
-        email:
-        password:
+        username: String!,
+        email: String!,
+        password: String!
     );
 
     saveBook(
-        bookId:
-        authors:
-        description:
-        title:
-        image:
-        link:
+        bookId: String!,
+        authors: [String!],
+        description: String!,
+        title: String!,
+        image: String,
+        link: String!
     ); User
 
     removeBook(
-        bookId:
+        bookId: String!
     ); User
  }
+
 type User {
-    _id:
-    username:
-    email:
-    bookCount:
-    savedBook:
+    _id: ID!
+    username: String!
+    email: String!
+    bookCount: Int
+    savedBook: [Book]
   }
 
   type Book {
-    bookId:
-    authors:
-    description:
-    title:
-    image:
-    link:
+    bookId: String!
+    authors: [String!]
+    description: String!
+    title: String!
+    image: String
+    link: String
   }
 
   type Auth {
-    token:
-    user:
+    token: ID!
+    user: User
   }
-`
+`;
+
+module.exports = typeDefs;
