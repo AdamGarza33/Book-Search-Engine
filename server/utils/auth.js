@@ -10,7 +10,7 @@ module.exports = {
     // allows token to be sent via  req.query or headers
     let token = req.headers.authorization;
 
-    // ["Bearer", "<tokenvalue>"]
+    // Returns only the token
     if (req.headers.authorization) {
       token = token.split(' ').pop().trim();
     }
@@ -28,7 +28,7 @@ module.exports = {
       return res.status(400).json({ message: 'invalid token!' });
     }
 
-    // send to next endpoint
+    // Return request object so it can be passed to resolver
     return req;
   },
   signToken: function ({ username, email, _id }) {
