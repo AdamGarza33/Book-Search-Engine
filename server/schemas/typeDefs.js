@@ -6,10 +6,29 @@ const typeDefs = gql`
  }
 
  type Mutation {
-    login {
+    login (
         email:
         password:
-    } 
+    ); Auth
+
+    addUser(
+        username:
+        email:
+        password:
+    );
+
+    saveBook(
+        bookId:
+        authors:
+        description:
+        title:
+        image:
+        link:
+    ); User
+
+    removeBook(
+        bookId:
+    ); User
  }
 type User {
     _id:
