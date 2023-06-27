@@ -82,7 +82,7 @@ const SearchBooks = () => {
         title: bookToSave.title,
         authors: bookToSave.authors,
         image: bookToSave.image,
-        link: bookToSave.link,
+        link: bookToSave.link
       },
     });
 
