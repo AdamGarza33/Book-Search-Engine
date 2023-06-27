@@ -38,5 +38,33 @@ const resolver = {
               return { token, user };
     },
 
-    
-};
+    // get the logged in user from context and add a book to users savedBooks array
+    saveBook: async (parent, book, context) => {
+        if (context.user) {
+            return User.findOneAndUpdate(
+              { _id: context.user._id},
+              {
+                $addToSet: { savedBooks: book},
+              },
+              {
+                new: true,
+                runValidators: true 
+              }
+            );
+          }
+          // If a user attempts to execute this mutation and is not logged in, throw an error
+          throw new AuthenticationError('You need to be logged in!');
+        },
+        
+        // retrieve the logged in user from the context and remove the book from the user's savedBooks array
+        removeBook: async (parent, { bookId }, context) => {
+          if (context.user) {
+            return User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $pull: { savedBooks: { bookId: bookId } } },
+              { new: true }
+            );
+          }
+          throw new AuthenticationError('You need to be logged in!');
+    }
+}};
